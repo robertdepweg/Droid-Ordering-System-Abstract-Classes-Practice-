@@ -2,7 +2,7 @@
 
 ## Author
 
-
+Robert Depweg
 
 ## Description
 
@@ -107,7 +107,7 @@ Be sure to think about what the time complexity for the bucket sort will be. Thi
 
 ## Outside Resources Used
 
-
+https://www.geeksforgeeks.org/type-isinstance-python/ 
 
 ## Known Problems, Issues, And/Or Errors in the Program
 

@@ -10,6 +10,7 @@ from abc import ABC, abstractmethod
 
 # First-party Imports
 from abstract_droid import AbstractDroid
+import datastructures
 
 
 class Droid(AbstractDroid, ABC):
@@ -346,3 +347,15 @@ class DroidCollection:
             return_string += f"{os.linesep}"
         # Return completed string.
         return return_string
+    
+    def category_sort():
+        """"""
+        stack_protocol = datastructures.Stack()
+        stack_utility = datastructures.Stack()
+        stack_janitor = datastructures.Stack()
+        stack_astromech = datastructures.Stack()
+        queue = datastructures.Queue()
+
+    def instance_checker(checked_instance, classinfo):
+        """"""
+        return isinstance(checked_instance, classinfo)

@@ -5,7 +5,7 @@
 # 6-4-2023
 
 # First-party imports
-from droids import DroidCollection
+import droids
 from userinterface import UserInterface
 
 
@@ -13,7 +13,10 @@ def main(*args):
     """Method to run program"""
 
     # Create a new instance of droid collection
-    droid_collection = DroidCollection()
+    droid_collection = droids.DroidCollection()
+
+    # Create dummy data
+    
 
     # Create a new instance of the user interface
     user_interface = UserInterface(droid_collection)

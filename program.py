@@ -16,14 +16,14 @@ def main(*args):
     droid_collection = droids.DroidCollection()
 
     # Create dummy data
-    droid_collection.add_janitor(TEARS_OF_A_JEDI, WHITE, True, False, True, False, True)
-    droid_collection.add_protocol(VANADIUM, RED, 6)
-    droid_collection.add_astromech(QUADRANIUM, GREEN, True, False, True, False, 5)
-    droid_collection.add_utility(CARBONITE, RED, True, False, True)
-    droid_collection.add_utility(VANADIUM, BLUE, False, True, False)
-    droid_collection.add_protocol(QUADRANIUM, BLUE, 3)
-    droid_collection.add_janitor(CARBONITE, GREEN, False, True, True, False, True)
-    droid_collection.add_astromech(TEARS_OF_A_JEDI, WHITE, False, True, False, False, 30)
+    droid_collection.add_janitor(1, 1, True, False, True, False, True)
+    droid_collection.add_protocol(2, 2, 6)
+    droid_collection.add_astromech(3, 3, True, False, True, False, 5)
+    droid_collection.add_utility(4, 2, True, False, True)
+    droid_collection.add_utility(2, 4, False, True, False)
+    droid_collection.add_protocol(3, 4, 3)
+    droid_collection.add_janitor(4, 3, False, True, True, False, True)
+    droid_collection.add_astromech(1, 1, False, True, False, False, 30)
 
     # Create a new instance of the user interface
     user_interface = UserInterface(droid_collection)
@@ -44,10 +44,10 @@ def main(*args):
             list_choice = user_interface.get_print_choice(2, user_interface.display_list_options)
             # If 1, print list in stack format
             if list_choice == 1:
-                droid_collection.category_sort()
+                droid_collection.droid_model_sort()
             # If 2, print list in queue format
             elif list_choice == 2:
-                droid_collection.category_sort()
+                droid_collection.droid_total_cost_sort()
             
         elif choice == 3:
             user_interface.sort_list()

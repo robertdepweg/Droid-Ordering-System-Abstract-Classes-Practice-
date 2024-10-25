@@ -348,7 +348,7 @@ class DroidCollection:
         # Return completed string.
         return return_string
     
-    def category_sort(self):
+    def droid_model_sort(self):
         """Categorizes the droids by model"""
         stack_protocol = datastructures.Stack()
         stack_utility = datastructures.Stack()
@@ -359,22 +359,28 @@ class DroidCollection:
         # Loops through collection
         for droid in self._collection:
             if self.instance_checker(droid, AstromechDroid):
-                stack_astromech.append(droid)
-            elif self.instance_checker(droid, UtilityDroid):
-                stack_utility.append(droid)
+                stack_astromech.push(droid)
             elif self.instance_checker(droid, JanitorDroid):
-                stack_janitor.append(droid)
+                stack_janitor.push(droid)
+            elif self.instance_checker(droid, UtilityDroid):
+                stack_utility.push(droid)
             elif self.instance_checker(droid, ProtocolDroid):
-                stack_protocol.append(droid)
+                stack_protocol.push(droid)
         
-        # Add stack instance droids to enqueue
-        queue = stack_to_queue(queue, stack_protocol, stack_utility, stack_janitor, stack_astromech)
+        # Add stack instance droids to enqueue by stack data removal
+        queue.enqueue(stack_astromech.pop)
+        queue.enqueue(stack_janitor.pop)
+        queue.enqueue(stack_utility.pop)
+        queue.enqueue(stack_protocol.pop)
+
         # Replace original list of droids with queue droids
+        for i in range(self._collection):
+            self._collection.replace(droid, queue.dequeue)
 
-    def stack_to_queue(self, queue, stack_protocol, stack_utility, stack_janitor, stack_astromech):
-        """Adds stack instance droids to enqueue"""
-        pass
-
-    def instance_checker(checked_instance, classinfo):
+    def instance_checker(self, checked_instance, classinfo):
         """Checks what class instance the instance is"""
         return isinstance(checked_instance, classinfo)
+    
+    def droid_total_cost_sort(self):
+        """"""
+        pass

@@ -61,9 +61,11 @@ class UserInterface:
             
     def display_list_options(self):
         """Display droid sorting options"""
-        print("How would you like the droid list to be printed?")
-        print("1. Stack")
-        print("2. Queue")
+        print("How would you like to sort the droid list?")
+        print("1. By Model")
+        print("2. By Total Cost")
+        print("3. Go back to menu options")
+        print()
 
     def get_print_choice(self, max_choice, menu_function):
         """Obtains print choice"""

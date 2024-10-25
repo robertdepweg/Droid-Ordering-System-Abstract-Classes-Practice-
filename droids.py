@@ -1,6 +1,6 @@
 """Droid classes"""
 
-# David Barnes
+# David Barnes, Robert Depweg
 # CIS 226
 # 6-4-2023
 
@@ -348,14 +348,33 @@ class DroidCollection:
         # Return completed string.
         return return_string
     
-    def category_sort():
-        """"""
+    def category_sort(self):
+        """Categorizes the droids by model"""
         stack_protocol = datastructures.Stack()
         stack_utility = datastructures.Stack()
         stack_janitor = datastructures.Stack()
         stack_astromech = datastructures.Stack()
         queue = datastructures.Queue()
 
+        # Loops through collection
+        for droid in self._collection:
+            if self.instance_checker(droid, AstromechDroid):
+                stack_astromech.append(droid)
+            elif self.instance_checker(droid, UtilityDroid):
+                stack_utility.append(droid)
+            elif self.instance_checker(droid, JanitorDroid):
+                stack_janitor.append(droid)
+            elif self.instance_checker(droid, ProtocolDroid):
+                stack_protocol.append(droid)
+        
+        # Add stack instance droids to enqueue
+        queue = stack_to_queue(queue, stack_protocol, stack_utility, stack_janitor, stack_astromech)
+        # Replace original list of droids with queue droids
+
+    def stack_to_queue(self, queue, stack_protocol, stack_utility, stack_janitor, stack_astromech):
+        """Adds stack instance droids to enqueue"""
+        pass
+
     def instance_checker(checked_instance, classinfo):
-        """"""
+        """Checks what class instance the instance is"""
         return isinstance(checked_instance, classinfo)

@@ -1,6 +1,6 @@
 """User Interface Module"""
 
-# David Barnes
+# David Barnes, Robert Depweg
 # CIS 226
 # 6-4-2023
 
@@ -58,7 +58,23 @@ class UserInterface:
             print_success("This is the current droid list:")
             print(self.droid_collection)
             print()
+            
+    def display_list_options(self):
+        """Display droid sorting options"""
+        print("How would you like the droid list to be printed?")
+        print("1. Stack")
+        print("2. Queue")
 
+    def get_print_choice(self, max_choice, menu_function):
+        """Obtains print choice"""
+        menu_function()
+        choice = self._get_int()
+        while choice > max_choice:
+            print("Please enter a valid option.")
+            menu_function()
+            choice = self._get_int()
+        return choice
+    
     def create_droid(self):
         """Get new Droid info"""
         try:

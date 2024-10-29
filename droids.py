@@ -359,23 +359,26 @@ class DroidCollection:
         # Loops through collection
         for droid in self._collection:
             if self.instance_checker(droid, AstromechDroid):
-                stack_astromech.push(droid)
+                stack_astromech.push_droid(droid)
             elif self.instance_checker(droid, JanitorDroid):
-                stack_janitor.push(droid)
+                stack_janitor.push_droid(droid)
             elif self.instance_checker(droid, UtilityDroid):
-                stack_utility.push(droid)
+                stack_utility.push_droid(droid)
             elif self.instance_checker(droid, ProtocolDroid):
-                stack_protocol.push(droid)
+                stack_protocol.push_droid(droid)
         
-        # Add stack instance droids to enqueue by stack data removal
-        queue.enqueue(stack_astromech.pop)
-        queue.enqueue(stack_janitor.pop)
-        queue.enqueue(stack_utility.pop)
-        queue.enqueue(stack_protocol.pop)
+        # Add stack instance droids to queue by stack data removal
+        queue.enqueue(stack_astromech.pop_droid)
+        queue.enqueue(stack_janitor.pop_droid)
+        queue.enqueue(stack_utility.pop_droid)
+        queue.enqueue(stack_protocol.pop_droid)
 
-        # Replace original list of droids with queue droids
-        for i in range(self._collection):
-            self._collection.replace(droid, queue.dequeue)
+        # Replace original list of droids with queue's droids
+        for i in range(len(self._collection)):
+            self._collection[i] = queue.dequeue
+
+        # prints _collection in queue style
+        
 
     def instance_checker(self, checked_instance, classinfo):
         """Checks what class instance the instance is"""

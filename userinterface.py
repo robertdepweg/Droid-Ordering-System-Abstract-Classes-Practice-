@@ -80,7 +80,7 @@ class UserInterface:
     def create_droid(self):
         """Get new Droid info"""
         try:
-            model_choice = self.get_menu_choice(5, self._display_model_selection_menu)
+            model_choice = self._get_model_selection()
             material = self._get_material_selection()
             color = self._get_color_selection()
 
@@ -145,6 +145,13 @@ class UserInterface:
         print(f"4. {AstromechDroid.model_name}")
         print("5. Cancel this operation")
         print()
+
+    def _get_model_selection(self):
+        """Get the model selection, and if user wants to quit"""
+        int_choice = self.get_menu_choice(5, self._display_model_selection_menu)
+        if int_choice == 5:
+            raise CancelError
+        return int_choice
 
     def _display_material_selection_menu(self):
         """Display material selection menu"""

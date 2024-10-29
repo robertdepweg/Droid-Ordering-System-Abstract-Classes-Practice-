@@ -45,9 +45,11 @@ def main(*args):
             # If 1, print list in stack format
             if list_choice == 1:
                 droid_collection.droid_model_sort()
+                user_interface.print_droid_list()
             # If 2, print list in queue format
             elif list_choice == 2:
                 droid_collection.droid_total_cost_sort()
+                user_interface.print_droid_list()
             
         elif choice == 3:
             user_interface.sort_list()

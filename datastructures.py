@@ -4,6 +4,7 @@
 # CIS 226
 # 10-25-2024
 
+
 class Stack:
     """Last in, first out with linked list"""
 
@@ -21,7 +22,7 @@ class Stack:
         self._tail = None
         self._size = 0
 
-    def push_droid(self, data):
+    def push(self, data):
         """Add a new element to the back of the linked list."""
         # Pointer to old tail is created
         old_tail = self._tail
@@ -38,7 +39,7 @@ class Stack:
         else:
             old_tail.next = self._tail
 
-    def pop_droid(self):
+    def pop(self):
         """Remove an element from the front of the linked list"""
         # Let's get the data to return
         data = self._head.data
@@ -54,7 +55,8 @@ class Stack:
 
         # Return the data from the removed node
         return data
-    
+
+
 class Queue:
     """First in, first out using linked list"""
 
@@ -91,7 +93,7 @@ class Queue:
         # Otherwise, do nothing.
         if self._size == 1:
             self._tail = self._head
-    
+
     def dequeue(self):
         """Remove an element from front of linked list"""
         # Let's get the data to return

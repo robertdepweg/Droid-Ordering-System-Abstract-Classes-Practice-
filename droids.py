@@ -347,9 +347,9 @@ class DroidCollection:
             return_string += f"{os.linesep}"
         # Return completed string.
         return return_string
-    
+
     def droid_model_sort(self):
-        """Categorizes the droids by model"""
+        """Categorizes the droid collection by model"""
         stack_protocol = datastructures.Stack()
         stack_utility = datastructures.Stack()
         stack_janitor = datastructures.Stack()
@@ -366,7 +366,7 @@ class DroidCollection:
                 stack_utility.push_droid(droid)
             elif self.instance_checker(droid, ProtocolDroid):
                 stack_protocol.push_droid(droid)
-        
+
         # Add stack instance droids to queue by stack data removal
         queue.enqueue(stack_astromech.pop_droid)
         queue.enqueue(stack_janitor.pop_droid)
@@ -377,13 +377,10 @@ class DroidCollection:
         for i in range(len(self._collection)):
             self._collection[i] = queue.dequeue
 
-        # prints _collection in queue style
-        
-
     def instance_checker(self, checked_instance, classinfo):
         """Checks what class instance the instance is"""
         return isinstance(checked_instance, classinfo)
-    
+
     def droid_total_cost_sort(self):
         """"""
         pass

@@ -12,6 +12,8 @@ from abc import ABC, abstractmethod
 from abstract_droid import AbstractDroid
 import datastructures
 from mergesort import MergeSort
+from mergesort import MergeSort
+
 
 class Droid(AbstractDroid, ABC):
     """Base Droid class. Also abstract as it does not make sense to allow it
@@ -67,6 +69,10 @@ class Droid(AbstractDroid, ABC):
     def _droid_info_str(self):
         """Returns subclass specific attributes as a string"""
         raise NotImplementedError()
+    
+    def comparision_setup():
+        """Numeric value is compared and evaluated"""
+        pass
 
     def _get_material_cost(self):
         """Get the material cost based on value of instance's material"""
@@ -366,16 +372,12 @@ class DroidCollection:
                 stack_utility.push(droid)
             elif self.instance_checker(droid, ProtocolDroid):
                 stack_protocol.push(droid)
-
+        
         # Add stack instance droids to queue by stack data removal
-        for i in range(stack_astromech._size):
-            queue.enqueue(stack_astromech.pop)
-        for i in range(stack_janitor._size):
-            queue.enqueue(stack_janitor.pop)
-        for i in range(stack_utility._size):
-            queue.enqueue(stack_utility.pop)
-        for i in range(stack_protocol._size):
-            queue.enqueue(stack_protocol.pop)
+        queue.enqueue(stack_astromech.pop)
+        queue.enqueue(stack_janitor.pop)
+        queue.enqueue(stack_utility.pop)
+        queue.enqueue(stack_protocol.pop)
 
         # Replace original list of droids with queue's droids
         for i in range(len(self._collection)):
@@ -386,6 +388,5 @@ class DroidCollection:
         return isinstance(checked_instance, classinfo)
 
     def droid_total_cost_sort(self):
-        """"""
+        """Sorts droid collection from cheapest to most expensive"""
         MergeSort.sort(self._collection)
-        pass

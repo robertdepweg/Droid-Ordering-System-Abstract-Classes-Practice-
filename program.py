@@ -16,14 +16,18 @@ def main(*args):
     droid_collection = droids.DroidCollection()
 
     # Create dummy data
-    droid_collection.add_janitor(1, 1, True, False, True, False, True)
-    droid_collection.add_protocol(2, 2, 6)
-    droid_collection.add_astromech(3, 3, True, False, True, False, 5)
-    droid_collection.add_utility(4, 2, True, False, True)
-    droid_collection.add_utility(2, 4, False, True, False)
-    droid_collection.add_protocol(3, 4, 3)
-    droid_collection.add_janitor(4, 3, False, True, True, False, True)
-    droid_collection.add_astromech(1, 1, False, True, False, False, 30)
+    droid_collection.add_janitor('Carbonite', 'White', True, False, True, False, True)
+    droid_collection.add_protocol('Vanadium', 'Blue', 6)
+    droid_collection.add_astromech('Quadranium', 'Green', True, False, True, False, 5)
+    droid_collection.add_utility('Tears Of A Jedi', 'Red', True, False, True)
+    droid_collection.add_utility('Vanadium', 'Blue', False, True, False)
+    droid_collection.add_protocol('Quadranium', 'Red', 3)
+    droid_collection.add_janitor('Tears Of A Jedi', 'Green', False, True, True, False, True)
+    droid_collection.add_astromech('Carbonite', 'White', False, True, False, False, 30)
+
+    # Loops through collection to calculate cost
+    for droid in droid_collection._collection:
+        droids.Droid.calculate_total_cost(droid)
 
     # Create a new instance of the user interface
     user_interface = UserInterface(droid_collection)

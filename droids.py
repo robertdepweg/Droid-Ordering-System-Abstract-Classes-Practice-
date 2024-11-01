@@ -11,7 +11,7 @@ from abc import ABC, abstractmethod
 # First-party Imports
 from abstract_droid import AbstractDroid
 import datastructures
-
+from mergesort import MergeSort
 
 class Droid(AbstractDroid, ABC):
     """Base Droid class. Also abstract as it does not make sense to allow it
@@ -336,7 +336,7 @@ class DroidCollection:
         # Loop through all droids and form the return string.
         for droid in self._collection:
             # Calculate the total cost of the droid. Since we are using inheritance
-            # an polymorphism, the program will automatically know which version
+            # and polymorphism, the program will automatically know which version
             # of calculate_total_cost it needs to call based on which particular
             # type it is looking at during the for loop.
             droid.calculate_total_cost()
@@ -359,23 +359,27 @@ class DroidCollection:
         # Loops through collection
         for droid in self._collection:
             if self.instance_checker(droid, AstromechDroid):
-                stack_astromech.push_droid(droid)
+                stack_astromech.push(droid)
             elif self.instance_checker(droid, JanitorDroid):
-                stack_janitor.push_droid(droid)
+                stack_janitor.push(droid)
             elif self.instance_checker(droid, UtilityDroid):
-                stack_utility.push_droid(droid)
+                stack_utility.push(droid)
             elif self.instance_checker(droid, ProtocolDroid):
-                stack_protocol.push_droid(droid)
+                stack_protocol.push(droid)
 
         # Add stack instance droids to queue by stack data removal
-        queue.enqueue(stack_astromech.pop_droid)
-        queue.enqueue(stack_janitor.pop_droid)
-        queue.enqueue(stack_utility.pop_droid)
-        queue.enqueue(stack_protocol.pop_droid)
+        for i in range(stack_astromech._size):
+            queue.enqueue(stack_astromech.pop)
+        for i in range(stack_janitor._size):
+            queue.enqueue(stack_janitor.pop)
+        for i in range(stack_utility._size):
+            queue.enqueue(stack_utility.pop)
+        for i in range(stack_protocol._size):
+            queue.enqueue(stack_protocol.pop)
 
         # Replace original list of droids with queue's droids
         for i in range(len(self._collection)):
-            self._collection[i] = queue.dequeue
+            self._collection[i] = queue.dequeue()
 
     def instance_checker(self, checked_instance, classinfo):
         """Checks what class instance the instance is"""
@@ -383,4 +387,5 @@ class DroidCollection:
 
     def droid_total_cost_sort(self):
         """"""
+        MergeSort.sort(self._collection)
         pass

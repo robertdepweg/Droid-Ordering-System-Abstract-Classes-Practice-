@@ -50,9 +50,6 @@ def main(*args):
             elif list_choice == 2:
                 droid_collection.droid_total_cost_sort()
                 user_interface.print_droid_list()
-            
-        elif choice == 3:
-            user_interface.sort_list()
         # Re-prompt for input
         choice = user_interface.get_menu_choice(3, user_interface.display_main_menu)
 

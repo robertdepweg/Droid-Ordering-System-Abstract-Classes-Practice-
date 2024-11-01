@@ -41,6 +41,8 @@ class Stack:
 
     def pop(self):
         """Remove an element from the front of the linked list"""
+        if self._head is None:
+            return
         # Let's get the data to return
         data = self._head.data
         # Move the head pointer to the next in the list

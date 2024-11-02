@@ -11,13 +11,6 @@ class MergeSort:
         """Constructor"""
         self._aux = []
 
-    def __gt__(self, i, mid):
-        """Greater than or equal to rich comparison"""
-        #return (self.)
-    
-    def __le__(self):
-        """Less than or equal to rich comparison"""
-
     def sort(self, iter):
         """Main entry point to sort"""
         self._aux = [None for i in range(len(iter))]
@@ -33,8 +26,7 @@ class MergeSort:
         self._merge(iter, lo, mid, hi)
 
     def _merge(self, mergeable, lo, mid, hi):
-        """"""
-        pass
+        """Merge iter[lo .. mid] with iter[mid+1 .. hi] using aux[lo .. hi]"""
         # Copy to aux[]
         for k in range(lo, hi + 1):
             self._aux[k] = mergeable[k]
@@ -43,16 +35,19 @@ class MergeSort:
         i = lo
         j = mid + 1
         for k in range(lo, hi + 1):
-            if __gt__(i, mid):  # Index past left subarray max index
+            if i > mid: # Index past left subarray max index
                 mergeable[k] = self._aux[j]
                 j += 1
-            elif j > hi:  # index past right subarray max index
+            elif j > hi: # index past right subarray max index
                 mergeable[k] = self._aux[i]
                 i += 1
-            elif self._aux[j] < self._aux[i]:  # compare
+            elif self._aux[j].__lt__(self._aux[i]): # compare lesser than
                 mergeable[k] = self._aux[j]
                 j += 1
+            # elif self._aux[j].__gt__(self._aux[i]): # compare greater than
+            #     mergeable[k] = self._aux[j]
+            #     j += 1
             else:
-                mergeable[k] = self.aux[i]
+                mergeable[k] = self._aux[i]
                 i += 1
         return

@@ -12,7 +12,6 @@ from abc import ABC, abstractmethod
 from abstract_droid import AbstractDroid
 import datastructures
 from mergesort import MergeSort
-from mergesort import MergeSort
 
 
 class Droid(AbstractDroid, ABC):
@@ -65,14 +64,18 @@ class Droid(AbstractDroid, ABC):
         """Calculate the total cost and store it in the total_cost attribute"""
         self.total_cost = self.MODEL_COST + self._get_material_cost() + self._get_color_cost()
 
+    def __lt__(self, other):
+        """Less than rich comparision"""
+        return (self.total_cost < other.total_cost)
+    
+    def __gt__(self, other):
+        """Greater than rich comparision"""
+        return (self.total_cost > other.total_cost)
+
     @abstractmethod
     def _droid_info_str(self):
         """Returns subclass specific attributes as a string"""
         raise NotImplementedError()
-    
-    def comparision_setup():
-        """Numeric value is compared and evaluated"""
-        pass
 
     def _get_material_cost(self):
         """Get the material cost based on value of instance's material"""
@@ -374,14 +377,23 @@ class DroidCollection:
                 stack_protocol.push(droid)
         
         # Add stack instance droids to queue by stack data removal
-        queue.enqueue(stack_astromech.pop)
-        queue.enqueue(stack_janitor.pop)
-        queue.enqueue(stack_utility.pop)
-        queue.enqueue(stack_protocol.pop)
+        for i in range(stack_astromech._size):
+            class_ins = stack_astromech.pop()
+            queue.enqueue(class_ins)
+        for i in range(stack_janitor._size):
+            class_ins = stack_janitor.pop()
+            queue.enqueue(class_ins)
+        for i in range(stack_utility._size):
+            class_ins = stack_utility.pop()
+            queue.enqueue(class_ins)
+        for i in range(stack_protocol._size):
+            class_ins = stack_protocol.pop()
+            queue.enqueue(class_ins)
 
-        # Replace original list of droids with queue's droids
+        # Replace original collection of droids with queue's droids
         for i in range(len(self._collection)):
-            self._collection[i] = queue.dequeue()
+            queued_droid = queue.dequeue()
+            self._collection[i] = queued_droid
 
     def instance_checker(self, checked_instance, classinfo):
         """Checks what class instance the instance is"""
@@ -389,4 +401,5 @@ class DroidCollection:
 
     def droid_total_cost_sort(self):
         """Sorts droid collection from cheapest to most expensive"""
-        MergeSort.sort(self._collection)
+        merge_sort = MergeSort()
+        merge_sort.sort(self._collection)

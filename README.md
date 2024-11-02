@@ -111,7 +111,7 @@ https://www.geeksforgeeks.org/type-isinstance-python/
 
 ## Known Problems, Issues, And/Or Errors in the Program
 
-
+MergeSort doesn't accurately arrange the droids by total.
 
 <br/><br/><br/><br/><br/><br/><br/><br/>
 
